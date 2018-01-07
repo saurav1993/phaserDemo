@@ -1,14 +1,37 @@
 var demo = {};
 demo.state0 = function(){};
+var centerx = 1500/2;
+var centery = 1000/2;
+var adam;
+var speed = 4;
 demo.state0.prototype = {
-    preload : function(){},
+    preload : function(){
+        game.load.image("adam","assets/sprites/adam.png");
+    },
     create : function(){
-        game.stage.backgroundColor = "#000000";
+        game.stage.backgroundColor = "#800060";
         game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
         addChangeStateEventListners();
         console.log("state 0");
+
+        //adam
+        //adds adam to the game world
+        adam =  game.add.sprite(centerx,centery,"adam");
+        //sets the anchor of adam from the top left corner to the center of the image
+        adam.anchor.setTo(0.5,0.5);
     },
-    update : function(){}
+    update : function(){
+        if(game.input.keyboard.isDown(Phaser.Keyboard.RIGHT)){
+            adam.x += speed;
+        } else if(game.input.keyboard.isDown(Phaser.Keyboard.LEFT)){
+            adam.x -= speed;
+        }
+        if(game.input.keyboard.isDown(Phaser.Keyboard.UP)){
+            adam.y -= speed;
+        } else if(game.input.keyboard.isDown(Phaser.Keyboard.DOWN)){
+            adam.y += speed;
+        }
+    }
 };
 
 function changeState(i,stateNum){
