@@ -16,7 +16,6 @@ demo.state0.prototype = {
         game.stage.backgroundColor = "#800060";
         game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
         addChangeStateEventListners();
-        console.log("state 0");
 
          //background image
          var bg = game.add.sprite(0,0,"tree");
@@ -68,6 +67,7 @@ demo.state0.prototype = {
 };
 
 function changeState(i,stateNum){
+    console.log("state" + stateNum);
     game.state.start("state"+stateNum);
 }
 
